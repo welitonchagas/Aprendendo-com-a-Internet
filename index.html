@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprendendo com a Internet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="clouds" aria-hidden="true">
+    <span class="cloud one"></span>
+    <span class="cloud two"></span>
+    <span class="cloud three"></span>
+  </div>
+
+  <main class="app">
+    <section class="screen active" id="home-screen">
+      <div class="panel home-panel">
+        <div>
+          <h1>Aprendendo com a Internet 🌈</h1>
+          <p class="subtitle">Escolha uma atividade!</p>
+        </div>
+
+        <div class="menu-grid" aria-label="Menu de atividades">
+          <button class="big-button yellow" type="button" data-screen="color-screen">
+            <span>✏️</span>
+            Desenhar
+          </button>
+          <button class="big-button blue" type="button" data-screen="memory-screen">
+            <span>🧩</span>
+            Memória
+          </button>
+          <button class="big-button green" type="button" data-screen="alphabet-screen">
+            <span>🔤</span>
+            Alfabeto
+          </button>
+          <button class="big-button pink" type="button" data-screen="numbers-screen">
+            <span>🔢</span>
+            Números
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="color-screen">
+      <div class="panel">
+        <div class="top-bar">
+          <button class="nav-button" type="button" data-screen="home-screen">🏠 Voltar</button>
+          <h2>Desenhar ✏️</h2>
+          <button class="round-button orange" id="clear-colors" type="button">🧽 Apagar tudo</button>
+        </div>
+
+        <div class="activity-grid draw-layout">
+          <aside class="palette" aria-label="Paleta de cores">
+            <p class="palette-title">Cor do pincel</p>
+            <button class="color-dot selected" type="button" style="background:#ff4d6d" data-color="#ff4d6d" aria-label="Rosa forte"></button>
+            <button class="color-dot" type="button" style="background:#ffd84d" data-color="#ffd84d" aria-label="Amarelo"></button>
+            <button class="color-dot" type="button" style="background:#4db8ff" data-color="#4db8ff" aria-label="Azul"></button>
+            <button class="color-dot" type="button" style="background:#62db78" data-color="#62db78" aria-label="Verde"></button>
+            <button class="color-dot" type="button" style="background:#ff9d3d" data-color="#ff9d3d" aria-label="Laranja"></button>
+            <button class="color-dot" type="button" style="background:#9b72ff" data-color="#9b72ff" aria-label="Roxo"></button>
+            <button class="color-dot" type="button" style="background:#8b5a2b" data-color="#8b5a2b" aria-label="Marrom"></button>
+            <button class="color-dot" type="button" style="background:#ffffff" data-color="#ffffff" aria-label="Branco"></button>
+            <button class="color-dot" type="button" style="background:#ffb3d9" data-color="#ffb3d9" aria-label="Rosa claro"></button>
+            <button class="color-dot" type="button" style="background:#2fd4c7" data-color="#2fd4c7" aria-label="Turquesa"></button>
+          </aside>
+
+          <div class="draw-stage">
+            <div class="free-draw-wrap">
+              <canvas id="free-canvas" width="640" height="480" aria-label="Área para desenhar livremente"></canvas>
+              <div class="free-toolbar" aria-label="Ferramentas de desenho">
+                <button class="tool-btn active" type="button" data-tool="brush" id="tool-brush">🖌️ Pincel</button>
+                <button class="tool-btn" type="button" data-tool="eraser" id="tool-eraser">🧽 Borracha</button>
+                <div class="brush-sizes" role="group" aria-label="Tamanho do pincel">
+                  <button class="size-btn" type="button" data-size="6" aria-label="Pincel fino">●</button>
+                  <button class="size-btn active" type="button" data-size="12" aria-label="Pincel médio">●</button>
+                  <button class="size-btn large" type="button" data-size="22" aria-label="Pincel grosso">●</button>
+                </div>
+                <button class="tool-btn save-btn green" type="button" id="save-drawing">💾 Salvar desenho</button>
+              </div>
+              <p class="free-hint">Escolha uma cor e arraste o mouse ou o dedo para desenhar!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="memory-screen">
+      <div class="panel">
+        <div class="top-bar">
+          <button class="nav-button" type="button" data-screen="home-screen">🏠 Voltar</button>
+          <h2>Jogo da Memória 🧩</h2>
+          <button class="round-button green" id="restart-memory" type="button">🔁 De novo</button>
+        </div>
+
+        <div class="memory-status">
+          <span class="badge">Tentativas: <strong id="attempts">0</strong></span>
+          <span class="badge">Ache os pares!</span>
+        </div>
+
+        <div class="memory-grid" id="memory-grid" aria-label="Cartas do jogo da memória"></div>
+        <div class="win-message" id="win-message">Parabéns! Você conseguiu! 🎉</div>
+      </div>
+    </section>
+
+    <section class="screen" id="alphabet-screen">
+      <div class="panel">
+        <div class="top-bar">
+          <button class="nav-button" type="button" data-screen="home-screen">🏠 Voltar</button>
+          <h2>Alfabeto 🔤</h2>
+          <span></span>
+        </div>
+
+        <div class="display-card" id="letter-display" aria-live="polite">
+          <div class="display-big">A</div>
+          <div class="display-word">A de Avião</div>
+          <div class="display-emoji">✈️</div>
+        </div>
+
+        <p class="voice-hint">🔊 Voz suave com internet. Abra pelo Edge ou Chrome.</p>
+        <div class="letters-grid" id="letters-grid" aria-label="Letras do alfabeto"></div>
+      </div>
+    </section>
+
+    <section class="screen" id="numbers-screen">
+      <div class="panel">
+        <div class="top-bar">
+          <button class="nav-button" type="button" data-screen="home-screen">🏠 Voltar</button>
+          <h2>Números 🔢</h2>
+          <span></span>
+        </div>
+
+        <div class="display-card" id="number-display" aria-live="polite">
+          <div class="display-big">1</div>
+          <div class="display-word">1 estrela</div>
+          <div class="display-emoji">⭐</div>
+        </div>
+
+        <p class="voice-hint">🔊 Voz suave com internet. Abra pelo Edge ou Chrome.</p>
+        <div class="numbers-grid" id="numbers-grid" aria-label="Números de 1 a 10"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
